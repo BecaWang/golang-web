@@ -1,0 +1,112 @@
+<html>
+<head>
+<title>Golang upload</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script>
+
+$( document ).ready(function() {
+    $("#progressbarTWInput").change(function(){
+    
+    readURL(this);
+  
+  });
+
+    $("#progressbarTWInput2").change(function(){
+    
+    readURL2(this);
+  
+  });
+});
+
+    function readURL(input){
+    
+      if(input.files && input.files[0]){
+    
+        var reader = new FileReader();
+    
+        reader.onload = function (e) {
+    
+           $("#preview_progressbarTW_img").attr('src', e.target.result);
+    
+        }
+    
+        reader.readAsDataURL(input.files[0]);
+    
+      }
+    
+    }
+
+    function readURL2(input){
+    
+    if(input.files && input.files[0]){
+  
+      var reader = new FileReader();
+  
+      reader.onload = function (e) {
+  
+         $("#preview_progressbarTW_img2").attr('src', e.target.result);
+  
+      }
+  
+      reader.readAsDataURL(input.files[0]);
+  
+    }
+  
+  }
+    
+    </script>
+</head>
+<body>
+
+    <div>
+
+            <form id="uploadForm" method="POST" enctype="multipart/form-data" action="upload">
+                <p>Golang upload</p>
+                <input type="FILE" id="file" name="file" />
+                <input type="SUBMIT" value="upload">
+                </form>
+    </div>
+
+    <div>
+            <form id="uploadForm2"  method="POST" action="upload" enctype="multipart/form-data">
+                <input type="file" id="progressbarTWInput" name="file" accept="image/gif, image/jpeg, image/png"/ >
+                <img id="preview_progressbarTW_img" src="#" />
+                <input type="SUBMIT" value="upload">
+             </form>
+
+    </div>
+
+
+    <div> 
+        <form id="uploadForm3"  method="POST" action="upload" enctype="multipart/form-data">
+           
+            <label class="text-center mb-5 image-preview-wrapper" for="file-uploader">
+              <img id="preview_progressbarTW_img2" src="https://via.placeholder.com/300x300/efefef?text=Avatar" alt="image-placehoder" class="img-thumbnail" data-target="image-preview" width="200" height="100"/>
+
+            </label>
+            
+            <div class="row">
+                <div>
+                    <div class="custom-file">
+                    <input type="file" name="file" class="custom-file-input" data-target="file-uploader" id="progressbarTWInput2">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                </div>
+                <input type="SUBMIT" value="upload">
+
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
+<!--參考來源
+https://lolikitty.pixnet.net/blog/post/187911900-golang-%2C-go-%E8%AA%9E%E8%A8%80%EF%BC%9Aweb-%E4%B8%8A%E5%82%B3%E5%9C%96%E7%89%87%E3%80%81%E6%AA%94%E6%A1%88
+https://progressbar.tw/posts/47
+https://pjchender.blogspot.com/2019/01/js-javascript-input-file-upload-file.html
+-->
